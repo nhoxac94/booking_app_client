@@ -6,6 +6,7 @@ import { SearchContext } from '../../context/SearchContext'
 import useFetch from '../../hooks/useFetch'
 import './reserve.scss'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../../const/BaseURL'
 
 const Reserve = ({ setOpen, hotelId }) => {
     const [selectedRooms, setSelectedRooms] = useState([])
@@ -38,7 +39,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     const handleReserve = async () => {
         try {
             await Promise.all(selectedRooms.map(roomId => {
-                const res = axios.put(`/rooms/availability/${roomId}`, { dates: bookingDate })
+                const res = axios.put(`${BASE_URL}/rooms/availability/${roomId}`, { dates: bookingDate })
                 return res.data
             }))
             setOpen(false)

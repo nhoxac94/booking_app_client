@@ -7,8 +7,6 @@ const useFetch = (url) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const path = BASE_URL + url
-    console.log(BASE_URL)
-    console.log(url)
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
